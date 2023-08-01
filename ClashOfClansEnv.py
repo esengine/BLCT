@@ -27,8 +27,11 @@ class ClashOfClansEnv:
 
 
 def plot_map(map_data):
-    plt.imshow(map_data, cmap='Paired', vmin=0, vmax=1)
-    plt.colorbar(ticks=[0, 1], format='%d', label='Building Type')
+    # 自定义颜色映射，0表示没有建筑，1表示大本营，2表示城墙
+    cmap = plt.cm.colors.ListedColormap(['white', 'red', 'blue'])
+
+    plt.imshow(map_data, cmap=cmap, vmin=0, vmax=2)
+    plt.colorbar(ticks=[0, 1, 2], format='%d', label='Building Type')
     plt.title('Clash of Clans Map')
     plt.xlabel('X')
     plt.ylabel('Y')
